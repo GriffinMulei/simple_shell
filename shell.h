@@ -6,7 +6,7 @@
 #include <sys/wait.h>
 #include <string.h>
 #include <unistd.h>
-#include <sys/stst.h>
+#include <sys/stat.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <string.h>
