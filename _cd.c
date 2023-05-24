@@ -8,8 +8,9 @@
 int main(void)
 {
 char *command, *home_dir = getenv("HOME"); /* home env */
-int n = 3;
-while (1)
+int n = 3, loop;
+loop = 1;
+while (loop)
 {
 printf("$ ");
 command = malloc(buf_size * sizeof(char));
