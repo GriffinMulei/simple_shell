@@ -11,8 +11,8 @@ char *command, *home_dir = getenv("HOME"); /* home env */
 while (1)
 {
 printf("$ ");
-command = malloc(buf_size * sizeof(char));
-fgets(command, buf_size, stdin);
+command = malloc(1024 * sizeof(char));
+fgets(command, 1024, stdin);
 command[strcspn(command, "\n")] = '\0';
 if (strcmp(command, "cd") == 0)
 {
