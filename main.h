@@ -7,5 +7,6 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
+#define buf_size 1024;
 
 #endif /* MAIN_H */

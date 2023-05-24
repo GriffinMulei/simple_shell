@@ -8,19 +8,20 @@
 int main(void)
 {
 char *command, *home_dir = getenv("HOME"); /* home env */
+int n = 3;
 while (1)
 {
 printf("$ ");
-command = malloc(1024 * sizeof(char));
-fgets(command, 1024, stdin);
+command = malloc(buf_size * sizeof(char));
+fgets(command, buf_size, stdin);
 command[strcspn(command, "\n")] = '\0';
 if (strcmp(command, "cd") == 0)
 {
 chdir(home_dir);
 }
-else if (strncmp(command, "cd ", 3) == 0)
+else if (strncmp(command, "cd ", n) == 0)
 {
-char *arg = command + 3;
+char *arg = n + command;
 chdir(arg);
 }
 else
