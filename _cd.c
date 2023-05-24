@@ -8,9 +8,7 @@
 int main(void)
 {
 char *command, *home_dir = getenv("HOME"); /* home env */
-int n = 3, loop;
-loop = 1;
-while (loop)
+while (1)
 {
 printf("$ ");
 command = malloc(buf_size * sizeof(char));
@@ -20,9 +18,9 @@ if (strcmp(command, "cd") == 0)
 {
 chdir(home_dir);
 }
-else if (strncmp(command, "cd ", n) == 0)
+else if (strncmp(command, "cd ", 3) == 0)
 {
-char *arg = n + command;
+char *arg = command + 3;
 chdir(arg);
 }
 else
