@@ -7,4 +7,4 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
-#endif /* MAIN_H */
+#endif"\n" /* MAIN_H */
