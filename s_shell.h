@@ -1,4 +1,4 @@
-#include "main.h"
+#include <stdio.h>
 
 /**
  * main - entry point function
@@ -12,7 +12,7 @@ int loop = 1;
 while (loop) /* start of infinite loop */
 {
 printf("$ ");   /* prompt to user */
-fgets(command, 256, stdin); /* collect input command*/
+fgets(command, 256, stdin); /* collect input command */
 system(command); /* run entered command */
 }
 return (0);
