@@ -15,7 +15,7 @@ int hsh(info_t *info, char **av)
 	while (r != -1 && builtin_ret != -2)
 	{
 		clear_info(info);
-		if (interactive(info))
+		if (shombeka(info))
 			_puts("$ ");
 		dhidhaguru(BUF_FLUSH);
 		r = tipeiwo(info);
@@ -26,13 +26,13 @@ int hsh(info_t *info, char **av)
 			if (builtin_ret == -1)
 				ruvarangu(info);
 		}
-		else if (interactive(info))
+		else if (shombeka(info))
 			_putchar('\n');
 		zvekutodaro(info, 0);
 	}
 	huyatidyezve(info);
 	zvekutodaro(info, 1);
-	if (!interactive(info) && info->status)
+	if (!shombeka(info) && info->status)
 		exit(info->status);
 	if (builtin_ret == -2)
 	{
@@ -105,7 +105,7 @@ void ruvarangu(info_t *info)
 	}
 	else
 	{
-		if ((interactive(info) || _getenv(info, "PATH=")
+		if ((shombeka(info) || _getenv(info, "PATH=")
 			|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
 			ruvarashe(info);
 		else if (*(info->arg) != '\n')

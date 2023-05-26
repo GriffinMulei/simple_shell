@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * zvapera - test if current char in buffer is a chain delimeter
- * @info: the parameter struct
- * @buf: the char buffer
- * @p: address of current position in buf
+ * zvapera - test
+ * @info: inf
+ * @buf: buf
+ * @p: p
  *
  * Return: 1 if chain delimeter, 0 otherwise
  */
@@ -36,12 +36,12 @@ int zvapera(info_t *info, char *buf, size_t *p)
 }
 
 /**
- * tapera - checks we should continue chaining based on last status
+ * tapera - checks
  * @info: the parameter struct
- * @buf: the char buffer
- * @p: address of current position in buf
- * @i: starting position in buf
- * @len: length of buf
+ * @buf: param
+ * @p: param
+ * @i: param
+ * @len: len
  *
  * Return: Void
  */
@@ -70,8 +70,8 @@ void tapera(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 }
 
 /**
- * marooro - replaces an aliases in the tokenized string
- * @info: the parameter struct
+ * marooro - replaces
+ * @info: the parameter
  *
  * Return: 1 if replaced, 0 otherwise
  */
@@ -99,8 +99,8 @@ int marooro(info_t *info)
 }
 
 /**
- * masowe - replaces vars in the tokenized string
- * @info: the parameter struct
+ * masowe - replaces
+ * @info: the parameter
  *
  * Return: 1 if replaced, 0 otherwise
  */
@@ -140,9 +140,9 @@ int masowe(info_t *info)
 }
 
 /**
- * shombe - replaces string
- * @old: address of old string
- * @new: new string
+ * shombe - replaces
+ * @old: old
+ * @new: new
  *
  * Return: 1 if replaced, 0 otherwise
  */
