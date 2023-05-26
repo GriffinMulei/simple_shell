@@ -1,11 +1,11 @@
-#include "shell.h"
+#include "main.h"
 
 /**
- * _strcpy - copies a string
- * @dest: the destination
- * @src: the source
+ * _strcpy - copy
+ * @dest: dest
+ * @src: src
  *
- * Return: pointer to destination
+ * Return: pointer
  */
 char *_strcpy(char *dest, char *src)
 {
@@ -23,10 +23,10 @@ char *_strcpy(char *dest, char *src)
 }
 
 /**
- * _strdup - duplicates a string
- * @str: the string to duplicate
+ * _strdup - duplicates
+ * @str: str
  *
- * Return: pointer to the duplicated string
+ * Return: pointer
  */
 char *_strdup(const char *str)
 {
@@ -46,8 +46,8 @@ char *_strdup(const char *str)
 }
 
 /**
- *_puts - prints an input string
- *@str: the string to be printed
+ *_puts - prints
+ *@str: str
  *
  * Return: Nothing
  */

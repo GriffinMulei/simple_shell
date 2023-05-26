@@ -1,12 +1,12 @@
-#include "shell.h"
+#include "main.h"
 
 /**
- * bfree - frees a pointer and NULLs the address
- * @ptr: address of the pointer to free
+ * mupfanha - frees
+ * @ptr: addres
  *
- * Return: 1 if freed, otherwise 0.
+ * Return: 1 if freed
  */
-int bfree(void **ptr)
+int mupfanha(void **ptr)
 {
 	if (ptr && *ptr)
 	{

@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  **_memset - fills memory with a constant byte
@@ -17,10 +17,10 @@ char *_memset(char *s, char b, unsigned int n)
 }
 
 /**
- * ffree - frees a string of strings
- * @pp: string of strings
+ * pamari - frees
+ * @pp: pp
  */
-void ffree(char **pp)
+void pamari(char **pp)
 {
 	char **a = pp;
 
@@ -32,12 +32,12 @@ void ffree(char **pp)
 }
 
 /**
- * _realloc - reallocates a block of memory
- * @ptr: pointer to previous malloc'ated block
- * @old_size: byte size of previous block
- * @new_size: byte size of new block
+ * _realloc - reallocates
+ * @ptr: ptr
+ * @old_size: old
+ * @new_size: new
  *
- * Return: pointer to da ol'block nameen.
+ * Return: pointer
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {

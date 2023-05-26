@@ -1,12 +1,12 @@
-#include "shell.h"
+#include "main.h"
 
 /**
- *_eputs - prints an input string
- * @str: the string to be printed
+ *nyambuya - function
+ * @str: str
  *
  * Return: Nothing
  */
-void _eputs(char *str)
+void nyambuya(char *str)
 {
 	int i = 0;
 
@@ -14,19 +14,19 @@ void _eputs(char *str)
 		return;
 	while (str[i] != '\0')
 	{
-		_eputchar(str[i]);
+		dhidhaguru(str[i]);
 		i++;
 	}
 }
 
 /**
- * _eputchar - writes the character c to stderr
- * @c: The character to print
+ * dhidhaguru - function
+ * @c: c
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _eputchar(char c)
+int dhidhaguru(char c)
 {
 	static int i;
 	static char buf[WRITE_BUF_SIZE];
@@ -42,14 +42,14 @@ int _eputchar(char c)
 }
 
 /**
- * _putfd - writes the character c to given fd
- * @c: The character to print
- * @fd: The filedescriptor to write to
+ * rufaro - function
+ * @c: c
+ * @fd: fd
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _putfd(char c, int fd)
+int rufaro(char c, int fd)
 {
 	static int i;
 	static char buf[WRITE_BUF_SIZE];
@@ -65,13 +65,13 @@ int _putfd(char c, int fd)
 }
 
 /**
- *_putsfd - prints an input string
- * @str: the string to be printed
- * @fd: the filedescriptor to write to
+ *maihwi - prints
+ * @str: str
+ * @fd: fd
  *
- * Return: the number of chars put
+ * Return: the number
  */
-int _putsfd(char *str, int fd)
+int maihwi(char *str, int fd)
 {
 	int i = 0;
 
@@ -79,7 +79,7 @@ int _putsfd(char *str, int fd)
 		return (0);
 	while (*str)
 	{
-		i += _putfd(*str++, fd);
+		i += rufaro(*str++, fd);
 	}
 	return (i);
 }

@@ -1,9 +1,9 @@
-#include "shell.h"
+#include "main.h"
 
 /**
- * hsh - main shell loop
- * @info: the parameter & return info struct
- * @av: the argument vector from main()
+ * hsh - main
+ * @info: the paramete
+ * @av: the argument
  *
  * Return: 0 on success, 1 on error, or error code
  */
@@ -17,21 +17,21 @@ int hsh(info_t *info, char **av)
 		clear_info(info);
 		if (interactive(info))
 			_puts("$ ");
-		_eputchar(BUF_FLUSH);
-		r = get_input(info);
+		dhidhaguru(BUF_FLUSH);
+		r = tipeiwo(info);
 		if (r != -1)
 		{
-			set_info(info, av);
+			pakatishatei(info, av);
 			builtin_ret = find_builtin(info);
 			if (builtin_ret == -1)
-				find_cmd(info);
+				ruvarangu(info);
 		}
 		else if (interactive(info))
 			_putchar('\n');
-		free_info(info, 0);
+		zvekutodaro(info, 0);
 	}
-	write_history(info);
-	free_info(info, 1);
+	huyatidyezve(info);
+	zvekutodaro(info, 1);
 	if (!interactive(info) && info->status)
 		exit(info->status);
 	if (builtin_ret == -2)
@@ -44,13 +44,10 @@ int hsh(info_t *info, char **av)
 }
 
 /**
- * find_builtin - finds a builtin command
- * @info: the parameter & return info struct
+ * find_builtin - finds
+ * @info: the parameter
  *
- * Return: -1 if builtin not found,
- *			0 if builtin executed successfully,
- *			1 if builtin found but not successful,
- *			-2 if builtin signals exit()
+ * Return: -1 if builtin not found
  */
 int find_builtin(info_t *info)
 {
@@ -58,8 +55,8 @@ int find_builtin(info_t *info)
 	builtin_table builtintbl[] = {
 		{"exit", _myexit},
 		{"env", _myenv},
-		{"help", _myhelp},
-		{"history", _myhistory},
+		{"help", rubatsiro},
+		{"history", pakufambayzia},
 		{"setenv", _mysetenv},
 		{"unsetenv", _myunsetenv},
 		{"cd", _mycd},
@@ -78,12 +75,12 @@ int find_builtin(info_t *info)
 }
 
 /**
- * find_cmd - finds a command in PATH
- * @info: the parameter & return info struct
+ * ruvarangu - find
+ * @info: the paramet
  *
  * Return: void
  */
-void find_cmd(info_t *info)
+void ruvarangu(info_t *info)
 {
 	char *path = NULL;
 	int i, k;
@@ -100,17 +97,17 @@ void find_cmd(info_t *info)
 	if (!k)
 		return;
 
-	path = find_path(info, _getenv(info, "PATH="), info->argv[0]);
+	path = tipeinzira(info, _getenv(info, "PATH="), info->argv[0]);
 	if (path)
 	{
 		info->path = path;
-		fork_cmd(info);
+		ruvarashe(info);
 	}
 	else
 	{
 		if ((interactive(info) || _getenv(info, "PATH=")
 			|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
-			fork_cmd(info);
+			ruvarashe(info);
 		else if (*(info->arg) != '\n')
 		{
 			info->status = 127;
@@ -120,12 +117,12 @@ void find_cmd(info_t *info)
 }
 
 /**
- * fork_cmd - forks a an exec thread to run cmd
- * @info: the parameter & return info struct
+ * ruvarashe - forks
+ * @info: the parameter
  *
  * Return: void
  */
-void fork_cmd(info_t *info)
+void ruvarashe(info_t *info)
 {
 	pid_t child_pid;
 
@@ -140,12 +137,11 @@ void fork_cmd(info_t *info)
 	{
 		if (execve(info->path, info->argv, get_environ(info)) == -1)
 		{
-			free_info(info, 1);
+			zvekutodaro(info, 1);
 			if (errno == EACCES)
 				exit(126);
 			exit(1);
 		}
-		/* TODO: PUT ERROR FUNCTION */
 	}
 	else
 	{

@@ -1,12 +1,11 @@
-#include "shell.h"
+#include "main.h"
 
 /**
- * _erratoi - converts a string to an integer
- * @s: the string to be converted
- * Return: 0 if no numbers in string, converted number otherwise
- *       -1 on error
+ * bvepfepfe - conv
+ * @s: the string
+ * Return: 0 if no numbers in string
  */
-int _erratoi(char *s)
+int bvepfepfe(char *s)
 {
 	int i = 0;
 	unsigned long int result = 0;
@@ -29,29 +28,29 @@ int _erratoi(char *s)
 }
 
 /**
- * print_error - prints an error message
- * @info: the parameter & return info struct
- * @estr: string containing specified error type
+ * print_error - error message
+ * @info: info
+ * @estr: estr
  * Return: 0 if no numbers in string, converted number otherwise
  *        -1 on error
  */
 void print_error(info_t *info, char *estr)
 {
-	_eputs(info->fname);
-	_eputs(": ");
+	nyambuya(info->fname);
+	nyambuya(": ");
 	print_d(info->line_count, STDERR_FILENO);
-	_eputs(": ");
-	_eputs(info->argv[0]);
-	_eputs(": ");
-	_eputs(estr);
+	nyambuya(": ");
+	nyambuya(info->argv[0]);
+	nyambuya(": ");
+	nyambuya(estr);
 }
 
 /**
- * print_d - function prints a decimal (integer) number (base 10)
+ * print_d - function
  * @input: the input
- * @fd: the filedescriptor to write to
+ * @fd: fd
  *
- * Return: number of characters printed
+ * Return: number
  */
 int print_d(int input, int fd)
 {
@@ -60,7 +59,7 @@ int print_d(int input, int fd)
 	unsigned int _abs_, current;
 
 	if (fd == STDERR_FILENO)
-		__putchar = _eputchar;
+		__putchar = dhidhaguru;
 	if (input < 0)
 	{
 		_abs_ = -input;
@@ -86,10 +85,10 @@ int print_d(int input, int fd)
 }
 
 /**
- * convert_number - converter function, a clone of itoa
+ * convert_number - converter
  * @num: number
  * @base: base
- * @flags: argument flags
+ * @flags: flags
  *
  * Return: string
  */
@@ -122,8 +121,8 @@ char *convert_number(long int num, int base, int flags)
 }
 
 /**
- * remove_comments - function replaces first instance of '#' with '\0'
- * @buf: address of the string to modify
+ * remove_comments - function
+ * @buf: buf
  *
  * Return: Always 0;
  */

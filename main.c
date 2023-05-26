@@ -1,7 +1,7 @@
-#include "shell.h"
+#include "main.h"
 
 /**
- * main - entry point
+ * main - main
  * @ac: arg count
  * @av: arg vector
  *
@@ -26,19 +26,19 @@ int main(int ac, char **av)
 				exit(126);
 			if (errno == ENOENT)
 			{
-				_eputs(av[0]);
-				_eputs(": 0: Can't open ");
-				_eputs(av[1]);
-				_eputchar('\n');
-				_eputchar(BUF_FLUSH);
+				nyambuya(av[0]);
+				nyambuya(": 0: Can't open ");
+				nyambuya(av[1]);
+				dhidhaguru('\n');
+				dhidhaguru(BUF_FLUSH);
 				exit(127);
 			}
 			return (EXIT_FAILURE);
 		}
 		info->readfd = fd;
 	}
-	populate_env_list(info);
-	read_history(info);
+	mbitidzai(info);
+	goramakora(info);
 	hsh(info, av);
 	return (EXIT_SUCCESS);
 }
