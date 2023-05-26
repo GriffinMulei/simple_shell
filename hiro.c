@@ -45,7 +45,7 @@ int _mysetenv(info_t *info)
 {
 	if (info->argc != 3)
 	{
-		nyambuya("Incorrect number of arguements\n");
+		_eputs("Incorrect number of arguements\n");
 		return (1);
 	}
 	if (_setenv(info, info->argv[1], info->argv[2]))
@@ -65,7 +65,7 @@ int _myunsetenv(info_t *info)
 
 	if (info->argc == 1)
 	{
-		nyambuya("Too few arguements.\n");
+		_eputs("Too few arguements.\n");
 		return (1);
 	}
 	for (i = 1; i <= info->argc; i++)
@@ -75,11 +75,12 @@ int _myunsetenv(info_t *info)
 }
 
 /**
- * mbitidzai - populates
- * @info: Structure
+ * populate_env_list - populates env linked list
+ * @info: Structure containing potential arguments. Used to maintain
+ *          constant function prototype.
  * Return: Always 0
  */
-int mbitidzai(info_t *info)
+int populate_env_list(info_t *info)
 {
 	list_t *node = NULL;
 	size_t i;

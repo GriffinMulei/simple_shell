@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * clear_info - initializes
- * @info: struc
+ * clear_info - initializes info_t struct
+ * @info: struct address
  */
 void clear_info(info_t *info)
 {
@@ -13,11 +13,11 @@ void clear_info(info_t *info)
 }
 
 /**
- * pakatishatei - initializes
- * @info: struct
+ * set_info - initializes info_t struct
+ * @info: struct address
  * @av: argument vector
  */
-void pakatishatei(info_t *info, char **av)
+void set_info(info_t *info, char **av)
 {
 	int i = 0;
 
@@ -39,19 +39,19 @@ void pakatishatei(info_t *info, char **av)
 			;
 		info->argc = i;
 
-		marooro(info);
-		masowe(info);
+		replace_alias(info);
+		replace_vars(info);
 	}
 }
 
 /**
- * zvekutodaro - frees
- * @info: struct
- * @all: true
+ * free_info - frees info_t struct fields
+ * @info: struct address
+ * @all: true if freeing all fields
  */
-void zvekutodaro(info_t *info, int all)
+void free_info(info_t *info, int all)
 {
-	pamari(info->argv);
+	ffree(info->argv);
 	info->argv = NULL;
 	info->path = NULL;
 	if (all)
@@ -64,9 +64,9 @@ void zvekutodaro(info_t *info, int all)
 			free_list(&(info->history));
 		if (info->alias)
 			free_list(&(info->alias));
-		pamari(info->environ);
+		ffree(info->environ);
 			info->environ = NULL;
-		mupfanha((void **)info->cmd_buf);
+		bfree((void **)info->cmd_buf);
 		if (info->readfd > 2)
 			close(info->readfd);
 		_putchar(BUF_FLUSH);

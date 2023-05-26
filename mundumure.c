@@ -49,12 +49,12 @@ char **strtow(char *str, char *d)
 }
 
 /**
- * **mapiritsi - splits
- * @str: str
- * @d: d
- * Return: a pointer
+ * **strtow2 - splits a string into words
+ * @str: the input string
+ * @d: the delimeter
+ * Return: a pointer to an array of strings, or NULL on failure
  */
-char **mapiritsi(char *str, char d)
+char **strtow2(char *str, char d)
 {
 	int i, j, k, m, numwords = 0;
 	char **s;

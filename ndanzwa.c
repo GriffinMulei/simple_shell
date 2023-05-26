@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * usandisaize - gets
- * @info: parameter
+ * get_history_file - gets the history file
+ * @info: parameter struct
  *
- * Return: allocated
+ * Return: allocated string containg history file
  */
 
-char *usandisaize(info_t *info)
+char *get_history_file(info_t *info)
 {
 	char *buf, *dir;
 
@@ -25,15 +25,15 @@ char *usandisaize(info_t *info)
 }
 
 /**
- * huyatidyezve - creates
- * @info: the parameter
+ * write_history - creates a file, or appends to an existing file
+ * @info: the parameter struct
  *
- * Return: 1 on success
+ * Return: 1 on success, else -1
  */
-int huyatidyezve(info_t *info)
+int write_history(info_t *info)
 {
 	ssize_t fd;
-	char *filename = usandisaize(info);
+	char *filename = get_history_file(info);
 	list_t *node = NULL;
 
 	if (!filename)
@@ -45,26 +45,26 @@ int huyatidyezve(info_t *info)
 		return (-1);
 	for (node = info->history; node; node = node->next)
 	{
-		maihwi(node->str, fd);
-		rufaro('\n', fd);
+		_putsfd(node->str, fd);
+		_putfd('\n', fd);
 	}
-	rufaro(BUF_FLUSH, fd);
+	_putfd(BUF_FLUSH, fd);
 	close(fd);
 	return (1);
 }
 
 /**
- * goramakora - reads
- * @info: the parameter
+ * read_history - reads history from file
+ * @info: the parameter struct
  *
- * Return: value
+ * Return: histcount on success, 0 otherwise
  */
-int goramakora(info_t *info)
+int read_history(info_t *info)
 {
 	int i, last = 0, linecount = 0;
 	ssize_t fd, rdlen, fsize = 0;
 	struct stat st;
-	char *buf = NULL, *filename = usandisaize(info);
+	char *buf = NULL, *filename = get_history_file(info);
 
 	if (!filename)
 		return (0);
@@ -89,28 +89,28 @@ int goramakora(info_t *info)
 		if (buf[i] == '\n')
 		{
 			buf[i] = 0;
-			makoraa(info, buf + last, linecount++);
+			build_history_list(info, buf + last, linecount++);
 			last = i + 1;
 		}
 	if (last != i)
-		makoraa(info, buf + last, linecount++);
+		build_history_list(info, buf + last, linecount++);
 	free(buf);
 	info->histcount = linecount;
 	while (info->histcount-- >= HIST_MAX)
-		mabiribobi(&(info->history), 0);
-	makora(info);
+		delete_node_at_index(&(info->history), 0);
+	renumber_history(info);
 	return (info->histcount);
 }
 
 /**
- * makoraa - add
- * @info: info
+ * build_history_list - adds entry to a history linked list
+ * @info: Structure containing potential arguments. Used to maintain
  * @buf: buffer
- * @linecount: count
+ * @linecount: the history linecount, histcount
  *
  * Return: Always 0
  */
-int makoraa(info_t *info, char *buf, int linecount)
+int build_history_list(info_t *info, char *buf, int linecount)
 {
 	list_t *node = NULL;
 
@@ -124,12 +124,12 @@ int makoraa(info_t *info, char *buf, int linecount)
 }
 
 /**
- * makora - renumbers
- * @info: info
+ * renumber_history - renumbers the history linked list after changes
+ * @info: Structure containing potential arguments. Used to maintain
  *
  * Return: the new histcount
  */
-int makora(info_t *info)
+int renumber_history(info_t *info)
 {
 	list_t *node = info->history;
 	int i = 0;

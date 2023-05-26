@@ -1,20 +1,22 @@
 #include "main.h"
 
 /**
- * pakufambayzia - displays the history list
- * @info: info
+ * _myhistory - displays the history list, one command by line, preceded
+ *              with line numbers, starting at 0.
+ * @info: Structure containing potential arguments. Used to maintain
+ *        constant function prototype.
  *  Return: Always 0
  */
-int pakufambayzia(info_t *info)
+int _myhistory(info_t *info)
 {
 	print_list(info->history);
 	return (0);
 }
 
 /**
- * unset_alias - sets
- * @info: parameter
- * @str: str
+ * unset_alias - sets alias to string
+ * @info: parameter struct
+ * @str: the string alias
  *
  * Return: Always 0 on success, 1 on error
  */
@@ -28,16 +30,16 @@ int unset_alias(info_t *info, char *str)
 		return (1);
 	c = *p;
 	*p = 0;
-	ret = mabiribobi(&(info->alias),
+	ret = delete_node_at_index(&(info->alias),
 		get_node_index(info->alias, node_starts_with(info->alias, str, -1)));
 	*p = c;
 	return (ret);
 }
 
 /**
- * set_alias - sets
- * @info: parameter
- * @str: the string
+ * set_alias - sets alias to string
+ * @info: parameter struct
+ * @str: the string alias
  *
  * Return: Always 0 on success, 1 on error
  */
@@ -79,8 +81,9 @@ int print_alias(list_t *node)
 }
 
 /**
- * _myalias - mimics
- * @info: Structure
+ * _myalias - mimics the alias builtin (man alias)
+ * @info: Structure containing potential arguments. Used to maintain
+ *          constant function prototype.
  *  Return: Always 0
  */
 int _myalias(info_t *info)
